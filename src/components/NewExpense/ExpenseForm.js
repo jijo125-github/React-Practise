@@ -3,12 +3,45 @@ import './ExpenseForm.css';
 
 const ExpenseForm = () => {
     // Working with multiple states..
-    const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredAmount, setEnteredAmount] = useState('');
-    const [enteredDate, setEnteredDate] = useState('');
-    const titleChangeHandler = event => setEnteredTitle(event.target.value);
-    const amountChangeHandler = event => setEnteredAmount(event.target.value);
-    const dateChangeHandler = event => setEnteredDate(event.target.value);
+    //const [enteredTitle, setEnteredTitle] = useState('');
+    //const [enteredAmount, setEnteredAmount] = useState('');
+    //const [enteredDate, setEnteredDate] = useState('');
+
+    // using one state instead of multiple states
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        enteredAmount: '',
+        enteredDate: ''
+    });
+
+    const titleChangeHandler = (event) => {
+        //setEnteredTitle(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredTitle: event.target.value
+        });
+
+    };
+    const amountChangeHandler = (event) => {
+        //setEnteredAmount(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredAmount: event.target.value
+        });
+    };
+    const dateChangeHandler = (event) => {
+        //setEnteredDate(event.target.value);
+        // setUserInput({
+        //     ...userInput,
+        //     enteredDate: event.target.value
+        // });
+
+        // Here, we will use the alternative (updating state that depends on previous state)
+        // use this when updating a state depends on previous state
+        setUserInput((prevState) => {
+            return {...prevState, enteredDate : event.target.value};
+        });
+    };
 
     return (
         <form>
