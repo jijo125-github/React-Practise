@@ -18,9 +18,16 @@ const App = () => {
     'date': new Date(2021, 2, 17)
   }];
 
+  //addExpenseHandler is a function which will be used to fetch data from the child (NewExpense.js) and use in parent (App.js) component
+  const addExpenseHandler = (newExpenseData) => {
+    console.log('In App.js');
+    console.log(newExpenseData);
+  };
+
   return (
     <div>
-      <NewExpense />
+      {/* Here we are just using a function (onAddNewExpense) in props as a pointer which can be used in Child Component (NewExpense) */}
+      <NewExpense onAddNewExpense={addExpenseHandler}/>
       <Expenses expenses={expenses} />
     </div>
   );
