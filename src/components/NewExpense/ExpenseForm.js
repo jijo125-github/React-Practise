@@ -15,7 +15,7 @@ const ExpenseForm = (props) => {
         event.preventDefault();
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            price: Number(enteredAmount),
             date: new Date(enteredDate)
         };
         props.onSaveExpenseData(expenseData); // child to parent component communication
