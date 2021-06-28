@@ -12,13 +12,13 @@ const initialExpenses = [{
   'id': 'e2',
   'title': 'Health Insurance',
   'price': 10000,
-  'date': new Date(2021, 6, 22)
+  'date': new Date(2020, 6, 22)
 },
 {
   'id': 'e3',
   'title': 'Light Bill',
   'price': 3300,
-  'date': new Date(2021, 2, 17)
+  'date': new Date(2019, 2, 17)
 }];
 
 const App = () => {

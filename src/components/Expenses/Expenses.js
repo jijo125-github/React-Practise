@@ -9,13 +9,16 @@ const Expenses = (props) => {
     const expenseFilterYearHandler = (filteredYear) => {
         setYearSelected(filteredYear);
     };
+    // using filter method to filter out particular year expenses
+    const filteredExpenses = props.expenses.filter(expense => expense.date.getFullYear().toString() === yearSelected);
+
 
     return (
         <div>
             <Card className="expenses">
                 <ExpensesFilter selected={yearSelected} onSelectedYearSave={expenseFilterYearHandler} />
                 {/* using map to dynamically insert each expenseItem */}
-                {props.expenses.map((expense) => (
+                {filteredExpenses.map((expense) => (
                     <ExpenseItem key={expense.id} title={expense.title} price={expense.price} date={expense.date} />
                 ))}
             </Card>
